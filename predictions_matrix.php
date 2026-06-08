@@ -16,20 +16,26 @@ foreach ($predictions as $prediction) {
     }
 }
 
-$pageTitle = 'Все прогнозы';
+$pageTitle = 'Toate pronosticurile';
 require __DIR__ . '/includes/header.php';
 ?>
 <section class="hero">
     <div>
-        <p class="eyebrow">Матрица прогнозов</p>
-        <h1>Все прогнозы по матчам</h1>
-        <p>Приватность: чужие счета открываются только после вашего прогноза на конкретный матч.</p>
+        <p class="eyebrow">Matricea pronosticurilor</p>
+        <h1>Toate pronosticurile pe meciuri</h1>
+        <p>Confidențialitate: scorurile celorlalți se afișează doar după ce ai trimis pronosticul tău pentru meciul respectiv.</p>
     </div>
 </section>
+<div class="score-legend" aria-label="Legendă punctaj">
+    <span class="legend-item legend-3">3 puncte · scor exact</span>
+    <span class="legend-item legend-2">2 puncte · diferență exactă</span>
+    <span class="legend-item legend-1">1 punct · rezultat corect</span>
+    <span class="legend-item legend-0">0 puncte · fără punctaj</span>
+</div>
 <div class="table-wrap matrix-wrap">
 <table class="data-table matrix-table">
     <thead>
-        <tr><th>Матч</th><th>Результат</th><?php foreach ($users as $contestUser): ?><th><?= e($contestUser['display_name']) ?></th><?php endforeach; ?></tr>
+        <tr><th>Meci</th><th>Rezultat</th><?php foreach ($users as $contestUser): ?><th><?= e($contestUser['display_name']) ?></th><?php endforeach; ?></tr>
     </thead>
     <tbody>
     <?php foreach ($matches as $match): ?>
@@ -45,12 +51,12 @@ require __DIR__ . '/includes/header.php';
                 <?php $isOwn = (int) $contestUser['id'] === (int) $user['id']; ?>
                 <td class="prediction-cell <?= $prediction && $prediction['points'] !== null ? 'points-' . (int) $prediction['points'] : '' ?>">
                     <?php if (!$prediction): ?>
-                        <span class="muted">Нет прогноза</span>
+                        <span class="muted">Fără pronostic</span>
                     <?php elseif ($canSee || $isOwn): ?>
                         <strong><?= (int) $prediction['predicted_home_score'] ?>:<?= (int) $prediction['predicted_away_score'] ?></strong>
                         <?php if ($prediction['points'] !== null): ?><br><span class="points">+<?= (int) $prediction['points'] ?></span><?php endif; ?>
                     <?php else: ?>
-                        <span class="status-text">Есть прогноз</span>
+                        <span class="status-text">Pronostic trimis</span>
                     <?php endif; ?>
                 </td>
             <?php endforeach; ?>
