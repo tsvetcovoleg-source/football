@@ -1,0 +1,30 @@
+# Local secrets and environment files
+config.php
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Runtime/cache files
+cache/
+tmp/
+temp/
+
+# User uploads / generated files
+uploads/
+storage/
+
+# Dependencies/build output
+vendor/
+node_modules/
+dist/
+build/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
