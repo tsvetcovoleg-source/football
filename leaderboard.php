@@ -18,19 +18,19 @@ $rows = $pdo->query(
      ORDER BY total_points DESC, exact_scores DESC, two_points DESC, average_points DESC, u.display_name ASC"
 )->fetchAll();
 
-$pageTitle = 'Турнирная таблица';
+$pageTitle = 'Clasamentul turneului';
 require __DIR__ . '/includes/header.php';
 ?>
 <section class="hero leaderboard-hero">
     <div>
-        <p class="eyebrow">Рейтинг прогнозистов</p>
-        <h1>Турнирная таблица</h1>
-        <p>Сортировка: очки, точные счета, прогнозы на 2 очка, средний балл.</p>
+        <p class="eyebrow">Ratingul pronosticatorilor</p>
+        <h1>Clasamentul turneului</h1>
+        <p>Sortare după puncte, scoruri exacte, pronosticuri de 2 puncte și media punctelor.</p>
     </div>
 </section>
 <div class="table-wrap">
 <table class="data-table leaderboard-table">
-    <thead><tr><th>Место</th><th>Прогнозист</th><th>Очки</th><th>Точные</th><th>2 очка</th><th>1 очко</th><th>Всего</th><th>Средний балл</th></tr></thead>
+    <thead><tr><th>Loc</th><th>Pronosticator</th><th>Puncte</th><th>Exacte</th><th>2 puncte</th><th>1 punct</th><th>Total</th><th>Media</th></tr></thead>
     <tbody>
     <?php foreach ($rows as $index => $row): ?>
         <?php $place = $index + 1; $medal = [1 => '🥇', 2 => '🥈', 3 => '🥉'][$place] ?? $place; ?>

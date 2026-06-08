@@ -17,9 +17,9 @@ function formatMatchDate(string $dateTime): string
 {
     $date = new DateTime($dateTime, new DateTimeZone(APP_TIMEZONE));
     $months = [
-        1 => 'января', 2 => 'февраля', 3 => 'марта', 4 => 'апреля',
-        5 => 'мая', 6 => 'июня', 7 => 'июля', 8 => 'августа',
-        9 => 'сентября', 10 => 'октября', 11 => 'ноября', 12 => 'декабря',
+        1 => 'ianuarie', 2 => 'februarie', 3 => 'martie', 4 => 'aprilie',
+        5 => 'mai', 6 => 'iunie', 7 => 'iulie', 8 => 'august',
+        9 => 'septembrie', 10 => 'octombrie', 11 => 'noiembrie', 12 => 'decembrie',
     ];
 
     return $date->format('j') . ' ' . $months[(int) $date->format('n')] . ' ' . $date->format('Y, H:i');
@@ -42,9 +42,9 @@ function secondsUntilMatch(string $dateTime): int
 function statusBadge(string $status): string
 {
     $labels = [
-        'scheduled' => 'Scheduled',
-        'live' => 'Live',
-        'finished' => 'Finished',
+        'scheduled' => 'Programat',
+        'live' => 'În direct',
+        'finished' => 'Finalizat',
     ];
     $label = $labels[$status] ?? ucfirst($status);
     return '<span class="badge badge-' . e($status) . '">' . e($label) . '</span>';

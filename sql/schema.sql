@@ -43,14 +43,14 @@ CREATE TABLE IF NOT EXISTS predictions (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO users (login, password_hash, role, display_name) VALUES
-('admin', '$2y$12$WGtvwyAw7tACkweCEBzDZerB2c5bwr5zaW./SRu.8Ux9br9MHSEQy', 'admin', 'Администратор'),
-('oleg', '$2y$12$x.1lDbEa/JI71shiDvLg6ukov4VPDX2KLRSr41E.aQ9x7bTYWtJnG', 'user', 'Олег'),
-('user1', '$2y$12$55iHRX8O48FaTaLgUTZ2yuYtV.GqBh7/8CVUtoPU.S/G6y1VKzVIi', 'user', 'Иван'),
-('user2', '$2y$12$55iHRX8O48FaTaLgUTZ2yuYtV.GqBh7/8CVUtoPU.S/G6y1VKzVIi', 'user', 'Мария')
+('admin', '$2y$12$WGtvwyAw7tACkweCEBzDZerB2c5bwr5zaW./SRu.8Ux9br9MHSEQy', 'admin', 'Administrator'),
+('oleg', '$2y$12$x.1lDbEa/JI71shiDvLg6ukov4VPDX2KLRSr41E.aQ9x7bTYWtJnG', 'user', 'Oleg'),
+('user1', '$2y$12$55iHRX8O48FaTaLgUTZ2yuYtV.GqBh7/8CVUtoPU.S/G6y1VKzVIi', 'user', 'Ion'),
+('user2', '$2y$12$55iHRX8O48FaTaLgUTZ2yuYtV.GqBh7/8CVUtoPU.S/G6y1VKzVIi', 'user', 'Maria')
 ON DUPLICATE KEY UPDATE display_name = VALUES(display_name), role = VALUES(role);
 
 INSERT INTO matches (tournament_stage, group_name, team_home, team_away, match_datetime, home_score, away_score, status) VALUES
-('Group Stage', 'Group A', 'Германия', 'Франция', '2026-06-12 21:00:00', NULL, NULL, 'scheduled'),
-('Group Stage', 'Group B', 'Аргентина', 'Испания', '2026-06-13 18:00:00', NULL, NULL, 'scheduled'),
-('Group Stage', 'Group C', 'Бразилия', 'Португалия', '2026-06-14 22:00:00', NULL, NULL, 'scheduled'),
-('1/8 Final', NULL, 'Нидерланды', 'Англия', '2026-06-28 20:00:00', NULL, NULL, 'scheduled');
+('Faza grupelor', 'Grupa A', 'Germania', 'Franța', '2026-06-12 21:00:00', NULL, NULL, 'scheduled'),
+('Faza grupelor', 'Grupa B', 'Argentina', 'Spania', '2026-06-13 18:00:00', NULL, NULL, 'scheduled'),
+('Faza grupelor', 'Grupa C', 'Brazilia', 'Portugalia', '2026-06-14 22:00:00', NULL, NULL, 'scheduled'),
+('Optimi de finală', NULL, 'Țările de Jos', 'Anglia', '2026-06-28 20:00:00', NULL, NULL, 'scheduled');
