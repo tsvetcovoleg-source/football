@@ -19,13 +19,13 @@ require __DIR__ . '/includes/header.php';
     <div>
         <p class="eyebrow">Centrul turneului</p>
         <h1>Meciuri și pronosticurile tale</h1>
-        <p>Alege scorul exact înainte de fluierul de start. După începerea meciului, pronosticul se blochează automat.</p>
+        <p>Alege scorul exact o singură dată înainte de fluierul de start. După salvare, pronosticul nu mai poate fi modificat.</p>
     </div>
     <a class="btn btn-primary" href="leaderboard.php">Vezi clasamentul</a>
 </section>
 
 <?php if (!empty($_GET['error'])): ?><div class="alert alert-error"><?= e($_GET['error']) ?></div><?php endif; ?>
-<?php if (!empty($_GET['saved'])): ?><div class="alert alert-success">Pronosticul a fost salvat.</div><?php endif; ?>
+<?php if (!empty($_GET['saved'])): ?><div class="alert alert-success">Pronosticul a fost salvat și nu mai poate fi modificat.</div><?php endif; ?>
 
 <div class="match-grid">
 <?php foreach ($matches as $match): ?>
@@ -56,21 +56,22 @@ require __DIR__ . '/includes/header.php';
             <div class="result-box">Rezultat: <strong><?= (int) $match['home_score'] ?>:<?= (int) $match['away_score'] ?></strong></div>
         <?php endif; ?>
 
-        <?php if (!$locked): ?>
+        <?php if (!$locked && !$hasPrediction): ?>
             <form action="save_prediction.php" method="post" class="prediction-form">
                 <input type="hidden" name="match_id" value="<?= (int) $match['id'] ?>">
                 <label>Pronosticul tău</label>
                 <div class="score-inputs">
-                    <input type="number" name="predicted_home_score" min="0" max="20" required value="<?= $hasPrediction ? (int) $match['predicted_home_score'] : '' ?>">
+                    <input type="number" name="predicted_home_score" min="0" max="20" required>
                     <span>:</span>
-                    <input type="number" name="predicted_away_score" min="0" max="20" required value="<?= $hasPrediction ? (int) $match['predicted_away_score'] : '' ?>">
+                    <input type="number" name="predicted_away_score" min="0" max="20" required>
                 </div>
-                <button class="btn btn-primary" type="submit"><?= $hasPrediction ? 'Actualizează pronosticul' : 'Salvează pronosticul' ?></button>
+                <button class="btn btn-primary" type="submit">Salvează pronosticul</button>
             </form>
         <?php else: ?>
             <div class="locked-box">
                 <?php if ($hasPrediction): ?>
                     Pronosticul tău: <strong><?= (int) $match['predicted_home_score'] ?>:<?= (int) $match['predicted_away_score'] ?></strong>
+                    <span>Nu mai poate fi modificat.</span>
                     <?php if ($match['points'] !== null): ?><span class="points">+<?= (int) $match['points'] ?></span><?php endif; ?>
                 <?php else: ?>
                     Nu ai setat un pronostic. Meciul a început deja.
