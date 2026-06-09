@@ -26,6 +26,7 @@ $basePrefix = $isAdminPage ? '../' : '';
             <a href="https://fifa.tvetcov.xyz/index.php">Pune pronosticul</a>
             <a href="<?= $basePrefix ?>leaderboard.php">Clasament</a>
             <a href="<?= $basePrefix ?>predictions_matrix.php">Pronosticuri</a>
+            <a href="<?= $basePrefix ?>regulament.php">Regulament</a>
             <span class="user-chip"><?= e($user['display_name']) ?></span>
             <a class="btn btn-small" href="<?= $basePrefix ?>logout.php">Ieșire</a>
         <?php endif; ?>
