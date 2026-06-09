@@ -381,3 +381,89 @@ input:focus, select:focus { border-color: rgba(66, 240, 138, .56); box-shadow: 0
     .data-table th, .data-table td { padding: 12px 13px; }
     .stats-grid, .action-grid { grid-template-columns: 1fr; }
 }
+
+.regulation-hero h1 {
+    text-transform: uppercase;
+}
+
+.regulation-card {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 22px;
+    padding: clamp(22px, 4vw, 34px);
+    background: linear-gradient(180deg, rgba(21, 50, 34, .95), rgba(7, 18, 13, .96));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.regulation-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 5px;
+    background: linear-gradient(90deg, var(--green), var(--gold));
+}
+
+.regulation-section {
+    position: relative;
+    z-index: 1;
+    padding: 0 0 22px;
+    border-bottom: 1px solid var(--line);
+}
+
+.regulation-section:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.regulation-section h2 {
+    margin: 0 0 14px;
+    color: var(--gold);
+    font-size: clamp(1.22rem, 3vw, 1.65rem);
+    letter-spacing: -.03em;
+}
+
+.regulation-section p,
+.alpha-list li {
+    color: #dff0e5;
+    line-height: 1.68;
+}
+
+.regulation-section p {
+    margin: 0 0 11px;
+}
+
+.regulation-section p:last-child,
+.alpha-list:last-child {
+    margin-bottom: 0;
+}
+
+.alpha-list {
+    margin: 8px 0 14px;
+    padding-left: 28px;
+    list-style-type: lower-alpha;
+}
+
+.alpha-list li {
+    margin-bottom: 8px;
+}
+
+.formula-box {
+    display: inline-flex;
+    max-width: 100%;
+    margin: 4px 0 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 209, 102, .16), rgba(66, 240, 138, .08));
+    color: var(--gold);
+    font-weight: 950;
+    box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 560px) {
+    .regulation-card { padding: 18px; border-radius: 22px; }
+    .formula-box { display: flex; font-size: .92rem; }
+}
