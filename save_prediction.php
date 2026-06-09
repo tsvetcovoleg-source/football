@@ -27,10 +27,20 @@ if (isMatchLocked($match['match_datetime'])) {
     redirect('/index.php?error=' . urlencode('Pronosticul nu mai poate fi modificat: meciul a început.'));
 }
 
-$sql = 'INSERT INTO predictions (user_id, match_id, predicted_home_score, predicted_away_score, points)
-        VALUES (?, ?, ?, ?, NULL)
-        ON DUPLICATE KEY UPDATE predicted_home_score = VALUES(predicted_home_score), predicted_away_score = VALUES(predicted_away_score), points = NULL, updated_at = NOW()';
+$existing = $pdo->prepare('SELECT id FROM predictions WHERE user_id = ? AND match_id = ? LIMIT 1');
+$existing->execute([$user['id'], $matchId]);
+
+if ($existing->fetch()) {
+    redirect('/index.php?error=' . urlencode('Pronosticul a fost deja salvat și nu mai poate fi modificat.'));
+}
+
+$sql = 'INSERT IGNORE INTO predictions (user_id, match_id, predicted_home_score, predicted_away_score, points)
+        VALUES (?, ?, ?, ?, NULL)';
 $save = $pdo->prepare($sql);
 $save->execute([$user['id'], $matchId, (int) $home, (int) $away]);
+
+if ($save->rowCount() !== 1) {
+    redirect('/index.php?error=' . urlencode('Pronosticul a fost deja salvat și nu mai poate fi modificat.'));
+}
 
 redirect('/index.php?saved=1');
