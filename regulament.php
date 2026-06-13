@@ -28,7 +28,7 @@ require __DIR__ . '/includes/header.php';
         <p>2.1. <strong>Participant</strong> — persoana admisă în Turneu, căreia i-a fost atribuit un login individual pentru introducerea prognozelor.</p>
         <p>2.2. <strong>Prognoză</strong> — estimarea rezultatului unui meci, exprimată prin indicarea scorului exact al acestuia.</p>
         <p>2.3. <strong>Meci</strong> — eveniment sportiv inclus în calendarul Turneului și disponibil pentru formularea prognozelor.</p>
-        <p>2.4. <strong>Rezultat real</strong> — scorul final al meciului, introdus în sistem după încheierea acestuia.</p>
+        <p>2.4. <strong>Rezultat real</strong> — scorul final al meciului, introdus în sistem după încheierea acestuia. Pentru meciurile din fazele eliminatorii, rezultatul real luat în considerare este scorul înregistrat la finalul celor două reprize regulamentare; prelungirile și loviturile de departajare nu se iau în calcul.</p>
         <p>2.5. <strong>Clasament</strong> — evidența cumulativă a punctelor obținute de Participanți în baza prognozelor formulate.</p>
         <p>2.6. <strong>Organizator</strong> — persoana responsabilă de administrarea Turneului, introducerea meciurilor, validarea rezultatelor și menținerea unei aparențe rezonabile de ordine.</p>
     </section>
@@ -106,13 +106,12 @@ require __DIR__ . '/includes/header.php';
         <p>8.3. Contribuția financiară la evenimentul final se stabilește în funcție de locul ocupat în clasamentul final, după cum urmează:</p>
         <ol class="alpha-list">
             <li>locul 1 — nu contribuie financiar;</li>
-            <li>locul 2 — contribuie cu 200* MDL;</li>
+            <li>locul 2 — contribuie cu 200 MDL;</li>
             <li>locul 3 — contribuie cu 250 MDL;</li>
             <li>fiecare loc următor contribuie cu o sumă majorată cu 50 MDL față de locul precedent.</li>
         </ol>
         <p>8.4. Formula generală de calcul pentru locurile începând cu locul 2 este:</p>
-        <div class="formula-box">Contribuție = 200* MDL + (Locul ocupat - 2) × 50 MDL</div>
-        <p class="formula-note">* Pentru participanții care nu sunt angajați ai Energbank, contribuția de bază este 300 MDL (taxă de lux).</p>
+        <div class="formula-box">Contribuție = 200 MDL + (Locul ocupat - 2) × 50 MDL</div>
         <p>8.5. Prin excepție de la orice principiu moral invocat ulterior, locul 1 este scutit integral de contribuție, în temeiul performanței, inspirației și superiorității temporare demonstrate în cadrul Turneului.</p>
         <p>8.6. Participantul clasat pe ultimul loc nu va fi discriminat, dar poate fi menționat în mod repetat în cadrul evenimentului final, în limitele unui umor rezonabil.</p>
     </section>
