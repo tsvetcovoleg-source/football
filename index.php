@@ -7,6 +7,7 @@ $stmt = $pdo->prepare(
     'SELECT m.*, p.predicted_home_score, p.predicted_away_score, p.points
      FROM matches m
      LEFT JOIN predictions p ON p.match_id = m.id AND p.user_id = ?
+     WHERE m.home_score IS NULL OR m.away_score IS NULL
      ORDER BY m.match_datetime ASC, m.id ASC'
 );
 $stmt->execute([$user['id']]);
