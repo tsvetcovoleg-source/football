@@ -42,8 +42,7 @@ require __DIR__ . '/includes/header.php';
         <?php $canSee = isAdmin($user) || !empty($userPredictedMatch[$match['id']]); ?>
         <tr>
             <td>
-                <strong><?= e($match['team_home']) ?> — <?= e($match['team_away']) ?></strong><br>
-                <span class="muted"><?= e($match['group_name'] ?: $match['tournament_stage']) ?> · <?= e(formatMatchDate($match['match_datetime'])) ?></span>
+                <strong><?= e($match['team_home']) ?> — <?= e($match['team_away']) ?></strong>
             </td>
             <td><?= $match['home_score'] !== null ? (int) $match['home_score'] . ':' . (int) $match['away_score'] : '—' ?></td>
             <?php foreach ($users as $contestUser): ?>
