@@ -32,4 +32,18 @@ $basePrefix = $isAdminPage ? '../' : '';
         <?php endif; ?>
     </nav>
 </header>
+<script>
+(function () {
+    function updateTopbarHeight() {
+        var topbar = document.querySelector('.topbar');
+        if (topbar) {
+            document.documentElement.style.setProperty('--topbar-height', topbar.offsetHeight + 'px');
+        }
+    }
+
+    updateTopbarHeight();
+    window.addEventListener('load', updateTopbarHeight);
+    window.addEventListener('resize', updateTopbarHeight);
+})();
+</script>
 <main class="container">
